@@ -12,28 +12,41 @@
       <h1>Weather Dashboard</h1>
     </header>
 
-    <main>
-      <section class="search">
-        <input type="text" id="city-input" placeholder="Enter city name" />
-        <button type="submit">Search</button>
-
-        <section class="search-history">
-          <h2>Search History</h2>
-          <!-- Search history content goes here -->
+<main>
+    <div class="left-section"></div>
+        <section class="search">
+            <h2>Search For A City:</h2>
+            <input type="text" placeholder="Enter city name" spellcheck="false"/>
+            <button>Search</button>
+            <div class="search-history">
+                <h2>Search History</h2>
+                <!-- Search history content goes here -->
+            </div>
+        </section>
+    </div>    
+    <div class="right-section">
+        <section class="current-weather">
+            <h2 class="city">San Diego</h2>
+            <p class="temp">Temp: 22°C</p>
+            <div class="details">
+                <div class="col">
+                    <div>
+                        <p class="humidity">Humidity :50%</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div>
+                        <p class="wind">Wind: 15 MPH</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
-      </section>
-
-      <section class="current-weather">
-        <h2>Current Weather</h2>
-        <!-- Current weather content goes here -->
-      </section>
-
-      <section class="forecast">
-        <h2>5-Day Forecast</h2>
-        <!-- Forecast content goes here -->
-      </section>     
-    </main>
+        <h2>5-Day Forecast:</h2>
+        <section class="forecast">
+        </section>
+    </div>  
+</main>
 
     <script src="./assets/script.js"></script>
   </body>

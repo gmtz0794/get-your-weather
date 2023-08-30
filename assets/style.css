@@ -1,0 +1,77 @@
+body, h1, h2, p, ul {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Header */
+header {
+  background-color: #3498db;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Search form */
+.search-form {
+  margin-top: 1rem;
+}
+
+#city-input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+}
+
+/* Main content */
+main {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 2rem;
+}
+
+/* Current weather and forecast */
+.current-weather, .forecast {
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Search history */
+.search-history {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+/* Styling for the forecast entries (reused for current weather) */
+.forecast-entry, #current-weather {
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling for the forecast entry title */
+.forecast-entry h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+/* Styling for the forecast entry paragraphs */
+.forecast-entry p {
+  margin: 5px 0;
+}

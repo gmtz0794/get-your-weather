@@ -1,13 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get Your Weather</title>
-    <link rel="stylesheet" href="./assets/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/style.css" />
+    <title>Weather Dashboard</title>
+  </head>
 
-</head>
-<body>
+  <body>
+    <header>
+      <h1>Weather Dashboard</h1>
+    </header>
+
+    <main>
+      <section class="search">
+        <input type="text" id="city-input" placeholder="Enter city name" />
+        <button type="submit">Search</button>
+
+        <section class="search-history">
+          <h2>Search History</h2>
+          <!-- Search history content goes here -->
+        </section>
+
+      </section>
+
+      <section class="current-weather">
+        <h2>Current Weather</h2>
+        <!-- Current weather content goes here -->
+      </section>
+
+      <section class="forecast">
+        <h2>5-Day Forecast</h2>
+        <!-- Forecast content goes here -->
+      </section>     
+    </main>
+
     <script src="./assets/script.js"></script>
-</body>
+  </body>
 </html>

@@ -51,6 +51,7 @@ main {
   display: flex;
   flex-direction: column;
   padding-left: 25px;
+  padding-right: 150px;
 }
 
 /* Current weather and forecast */
@@ -70,6 +71,17 @@ main {
   padding: 1rem;
   margin-bottom: 1rem;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Add this to your CSS */
+.forecast-item {
+  background-color: #181830d0;
+  color: white;
+  border-radius: 5px;
+  padding: 1rem;
+  margin: 0.8rem; /* Adjust the margin as needed */
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  display: inline-block; /* or display: flex; */
 }
 
 /* Footer */

@@ -2,9 +2,17 @@ const apiKey = "5e1e6ee4bec641307ff1cad4c169606f";
 const apiURL = "https://api.openweathermap.org/data/2.5/";
 const searchBox = document.querySelector(".search input");
 const searchBtn = document.querySelector(".search button");
-const weatherIcon = document.querySelector(".weather-icon");
 
-const uniqueDays = {};
+const weatherIcons = {
+  Clouds: "../images/clouds.png",
+  Clear: "../images/clear.png",
+  Rain: "../images/rain.png",
+  Thunderstorm: "../images/thunderstorm.png",
+  Mist: "../images/mist.png",
+  Snow: "../images/snow.png",
+};
+
+let uniqueDays = {};
 
 async function checkWeather(city) {
   try {
@@ -21,6 +29,10 @@ async function checkWeather(city) {
 
       console.log(forecastData);
       displayForecast(forecastData.list);
+      
+      saveToLocalStorage(city);
+      
+      updateSearchHistory(city);
     } else {
       displayErrorMessage("Please enter a valid city");
     }
@@ -41,39 +53,23 @@ function displayCurrentWeather(data) {
   } else {
     setWeatherIcon("Unknown"); 
   }
-  document.querySelector(".wind").innerHTML = "Wind: " + data.wind.speed + " MPH";
 }
-
 
 function setWeatherIcon(weather) {
   const weatherIcon = document.querySelector(".weather-icon");
-  switch (weather) {
-    case "Clouds":
-      weatherIcon.src = "image/Clouds.PNG";
-      break;
-    case "Clear":
-      weatherIcon.src = "image/Clear.PNG";
-      break;
-    case "Rain":
-      weatherIcon.src = "image/Rain.PNG";
-      break;
-    case "Thunderstorm":
-      weatherIcon.src = "image/Thunderstorm.PNG";
-      break;
-    case "Mist":
-      weatherIcon.src = "image/Mist.PNG";
-      break;
-    case "Snow":
-      weatherIcon.src = "image/Snow.PNG";
-      break;
-    default:
-      weatherIcon.src = ""; 
-  }
+
+ weatherIcon.src = '';
+
+ if (weatherIcons[weather]) {
+  weatherIcon.src = weatherIcons[weather];
+ }
 }
 
 function displayForecast(forecastData) {
   const forecastSection = document.querySelector(".forecast");
   forecastSection.innerHTML = "";
+
+  uniqueDays = {};
 
   forecastData.forEach(forecast => {
     const forecastDate = new Date(forecast.dt * 1000);
@@ -104,6 +100,47 @@ function displayErrorMessage(message) {
   forecastSection.innerHTML = `<p>${message}</p>`;
 }
 
+function saveToLocalStorage(cityName) {
+  let savedCities = JSON.parse(localStorage.getItem("cities")) || [];
+
+  if (savedCities.length >= 8) {
+    savedCities.shift(); 
+  }
+
+  savedCities.push(cityName);
+  localStorage.setItem("cities", JSON.stringify(savedCities));
+}
+
+function updateSearchHistory(cityName) {
+  const listItem = document.createElement("div");
+  listItem.classList.add("search-item");
+  listItem.textContent = cityName;
+
+  const searchHistory = document.querySelector(".search-history");
+  searchHistory.insertBefore(listItem, searchHistory.firstChild);
+
+  while (searchHistory.children.length > 8) {
+    searchHistory.removeChild(searchHistory.lastChild);
+  }
+
+  listItem.addEventListener("click", () => {
+    checkWeather(cityName);
+  });
+}
+
 searchBtn.addEventListener("click", () => {
-  checkWeather(searchBox.value);
+  const cityName = searchBox.value.trim();
+  if (cityName) {
+    checkWeather(cityName);
+  }
 });
+
+const savedCities = JSON.parse(localStorage.getItem("cities")) || [];
+savedCities.forEach((city) => {
+  updateSearchHistory(city);
+});
+
+const lastSearchedCity = savedCities.pop();
+if (lastSearchedCity) {
+  checkWeather(lastSearchedCity);
+}

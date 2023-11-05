@@ -34,9 +34,12 @@ h1 {
 
 #search-button {
   display: block;
+  background-color: rgba(76, 76, 228, 0.671);
+  color: #ffffff;
   padding: 5px 129px;
-  border: 1px solid #ccc;
+  border: 1px solid rgba(250, 249, 249, 0.897);
   border-radius: 4px;
+  margin-top: 10px;
 }
 
 /* Main content */
@@ -62,6 +65,11 @@ main {
   padding: 1rem;
   margin-bottom: 1rem;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.weather-icon {
+  width: 30px; /* Set the width of the weather icon */
+  height: 30px; /* Set the height of the weather icon */
 }
 
 .forecast {
@@ -109,4 +117,16 @@ footer {
 /* Styling for the forecast entry paragraphs */
 .forecast-entry p {
   margin: 5px 0;
+}
+
+.search-history-button {
+  display: block;
+  width: 100%;
+  background-color: #212421d7;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px 0;
+  cursor: pointer;
+  border-radius: 5px;
 }

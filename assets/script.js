@@ -43,7 +43,10 @@ async function checkWeather(city) {
 }
 
 function displayCurrentWeather(data) {
-  document.querySelector(".city").innerHTML = data.name;
+  const currentDate = new Date();
+  const formattedDate = `${currentDate.getMonth() + 1}/${currentDate.getDate()}/${currentDate.getFullYear()}`;
+
+  document.querySelector(".city").innerHTML = `${data.name} (${formattedDate})`;
   document.querySelector(".temp").innerHTML = "Temp: " + Math.round(data.main.temp) + "°C";
   document.querySelector(".humidity").innerHTML = "Humidity: " + data.main.humidity + "%";
   document.querySelector(".wind").innerHTML = "Wind: " + data.wind.speed + " MPH";
@@ -85,6 +88,7 @@ function displayForecast(forecastData) {
       forecastItem.classList.add("forecast-item");
       forecastItem.innerHTML = `
         <h3>${formattedDate}</h3>
+        <img class="weather-icon" src="${getWeatherIconUrl(forecast.weather[0].main)}" alt="Weather Icon">
         <p>Temp: ${Math.round(forecast.main.temp)}°C</p>
         <p>Wind: ${forecast.wind.speed} MPH</p>
         <p>Humidity: ${forecast.main.humidity}%</p>
@@ -93,6 +97,21 @@ function displayForecast(forecastData) {
       forecastSection.appendChild(forecastItem);
     }
   });
+}
+
+function getWeatherIconUrl(weather) {
+  // Map weather conditions to appropriate icon files or classes
+  const iconMappings = {
+    Clouds: "../images/clouds.png",
+    Clear: "../images/clear.png",
+    Rain: "../images/rain.png",
+    Thunderstorm: "../images/thunderstorm.png",
+    Mist: "../images/mist.png",
+    Snow: "../images/snow.png",
+    // Add more mappings as needed
+  };
+
+  return iconMappings[weather] || "../images/Clouds.png"; // Default to an unknown icon if no mapping is found
 }
 
 function displayErrorMessage(message) {
@@ -112,21 +131,45 @@ function saveToLocalStorage(cityName) {
 }
 
 function updateSearchHistory(cityName) {
-  const listItem = document.createElement("div");
-  listItem.classList.add("search-item");
-  listItem.textContent = cityName;
-
   const searchHistory = document.querySelector(".search-history");
-  searchHistory.insertBefore(listItem, searchHistory.firstChild);
 
+  // Create a button element for the search entry
+  const searchEntryButton = document.createElement("button");
+  searchEntryButton.classList.add("search-history-button");
+  searchEntryButton.textContent = cityName;
+
+  // Add event listener to the button for handling the search
+  searchEntryButton.addEventListener("click", () => {
+    checkWeather(cityName);
+  });
+
+  // Insert the button at the beginning of the search history
+  searchHistory.insertBefore(searchEntryButton, searchHistory.firstChild);
+
+  // Limit the number of buttons to 8
   while (searchHistory.children.length > 8) {
     searchHistory.removeChild(searchHistory.lastChild);
   }
-
-  listItem.addEventListener("click", () => {
-    checkWeather(cityName);
-  });
 }
+
+function resetSearchHistory() {
+  const searchHistory = document.querySelector(".search-history");
+  searchHistory.innerHTML = ""; // Clear search history
+
+  const forecastSection = document.querySelector(".forecast");
+  forecastSection.innerHTML = "<p>Please Enter a City</p>"; // Display message
+
+  document.querySelector(".city").innerHTML = "Please Enter a City";
+  document.querySelector(".temp").innerHTML = "";
+  document.querySelector(".humidity").innerHTML = "";
+  document.querySelector(".wind").innerHTML = "";
+  document.querySelector(".weather-icon").src = ""; // Clear weather icon
+
+  localStorage.clear();
+  console.log("Local storage cleared");
+}
+
+window.addEventListener("load", resetSearchHistory);
 
 searchBtn.addEventListener("click", () => {
   const cityName = searchBox.value.trim();

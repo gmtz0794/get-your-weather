@@ -102,12 +102,12 @@ function displayForecast(forecastData) {
 function getWeatherIconUrl(weather) {
   // Map weather conditions to appropriate icon files or classes
   const iconMappings = {
-    Clouds: "../images/clouds.png",
-    Clear: "../images/clear.png",
-    Rain: "../images/rain.png",
-    Thunderstorm: "../images/thunderstorm.png",
-    Mist: "../images/mist.png",
-    Snow: "../images/snow.png",
+    Clouds: "../images/Clouds.png",
+    Clear: "../images/Clear.png",
+    Rain: "../images/Rain.png",
+    Thunderstorm: "../images/Thunderstorm.png",
+    Mist: "../images/Mist.png",
+    Snow: "../images/Snow.png",
     // Add more mappings as needed
   };
 

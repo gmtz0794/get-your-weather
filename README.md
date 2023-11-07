@@ -16,3 +16,7 @@ This is a web application. It does not require any software installation.
 
 When the user enters the weather app, they are prompt to enter a city name. After typing a city and clicking the search button below, they are presented with the current weather and a 5-day forecast. Also, the user can see a list of previous searches where they can press a previous search and the current weather will change into the picked search history city.
 ![Alt text](getyourweather.PNG)
+
+## License
+
+MIT License

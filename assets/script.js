@@ -187,3 +187,4 @@ const lastSearchedCity = savedCities.pop();
 if (lastSearchedCity) {
   checkWeather(lastSearchedCity);
 }
+

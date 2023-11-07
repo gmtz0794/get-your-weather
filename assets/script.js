@@ -4,12 +4,12 @@ const searchBox = document.querySelector(".search input");
 const searchBtn = document.querySelector(".search button");
 
 const weatherIcons = {
-  Clouds: "../images/clouds.png",
-  Clear: "../images/clear.png",
-  Rain: "../images/rain.png",
-  Thunderstorm: "../images/thunderstorm.png",
-  Mist: "../images/mist.png",
-  Snow: "../images/snow.png",
+  Clouds: "../images/Clouds.png",
+  Clear: "../images/Clear.png",
+  Rain: "../images/Rain.png",
+  Thunderstorm: "../images/Thunderstorm.png",
+  Mist: "../images/Mist.png",
+  Snow: "../images/Snow.png",
 };
 
 let uniqueDays = {};

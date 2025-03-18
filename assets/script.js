@@ -4,12 +4,12 @@ const searchBox = document.querySelector(".search input");
 const searchBtn = document.querySelector(".search button");
 
 const weatherIcons = {
-  Clouds: "../images/Clouds.png",
-  Clear: "../images/Clear.png",
-  Rain: "../images/Rain.png",
-  Thunderstorm: "../images/Thunderstorm.png",
-  Mist: "../images/Mist.png",
-  Snow: "../images/Snow.png",
+  Clouds: "../images/Clouds.PNG",
+  Clear: "../images/Clear.PNG",
+  Rain: "../images/Rain.PNG",
+  Thunderstorm: "../images/Thunderstorm.PNG",
+  Mist: "../images/Mist.PNG",
+  Snow: "../images/Snow.PNG",
 };
 
 let uniqueDays = {};
@@ -102,16 +102,16 @@ function displayForecast(forecastData) {
 function getWeatherIconUrl(weather) {
   // Map weather conditions to appropriate icon files or classes
   const iconMappings = {
-    Clouds: "../images/Clouds.png",
-    Clear: "../images/Clear.png",
-    Rain: "../images/Rain.png",
-    Thunderstorm: "../images/Thunderstorm.png",
-    Mist: "../images/Mist.png",
-    Snow: "../images/Snow.png",
+    Clouds: "../images/Clouds.PNG",
+    Clear: "../images/Clear.PNG",
+    Rain: "../images/Rain.PNG",
+    Thunderstorm: "../images/Thunderstorm.PNG",
+    Mist: "../images/Mist.PNG",
+    Snow: "../images/Snow.PNG",
     // Add more mappings as needed
   };
 
-  return iconMappings[weather] || "../images/Clouds.png"; // Default to an unknown icon if no mapping is found
+  return iconMappings[weather] || "../images/Clouds.PNG"; // Default to an unknown icon if no mapping is found
 }
 
 function displayErrorMessage(message) {
